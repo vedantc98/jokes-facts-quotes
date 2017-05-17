@@ -24,7 +24,7 @@ def makeWebhookResponse(req):
 	speech=payload
 	displayText=payload
 	
-	contextOut=["told_joke"]
+	contextOut=[{"name":"told_joke", "lifespan": 2, "parameters":{}}]
 	return {
 		"speech":speech,
 		"displayText":displayText,
