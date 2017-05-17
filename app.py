@@ -15,6 +15,8 @@ def apiai_post_handler():
 
 	res=makeWebhookResponse(req)
 
+	print res
+
 	res=json.dumps(res, indent=4)
         r=make_response(res)
 
