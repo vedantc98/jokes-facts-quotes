@@ -6,6 +6,7 @@ from flask import request
 import jokes
 
 def makeWebhookResponse(req):
+	print 'A1000'
 	try:
 		req_result=req.get("result")
 	except:
@@ -24,12 +25,12 @@ def makeWebhookResponse(req):
 	
 	#get_joke is supposed to return a tuple containing (joke, source)
 	payload, source=jokes.get_joke()
-
+	print 'B1000'
 	speech=payload
 	displayText=payload
 	
 	contextOut=["told_joke"]
-
+	print 'C1000'
 	return {
 		"speech":speech,
 		"displayText":displayText,
