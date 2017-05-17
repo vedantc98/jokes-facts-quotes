@@ -28,7 +28,7 @@ def makeWebhookResponse(req):
 	return {
 		"speech":speech,
 		"displayText":displayText,
-		"contextOut":contextOut,
+	#	"contextOut":contextOut,
 		"source":source
 		}
 
