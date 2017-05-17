@@ -20,7 +20,7 @@ def apiai_post_handler():
 
         r.headers['Content-Type']='application/json'
 
-	return res
+	return r
 
 if __name__=='__main__':
 	port = int(os.getenv('PORT', 5000))
