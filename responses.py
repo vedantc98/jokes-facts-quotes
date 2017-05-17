@@ -1,12 +1,8 @@
 import json
 
-from flask import make_response
-from flask import request
-
 import jokes
 
 def makeWebhookResponse(req):
-	print 'A1000'
 	try:
 		req_result=req.get("result")
 	except:
@@ -19,18 +15,16 @@ def makeWebhookResponse(req):
 		print "Lol2"
 		return {"lol2":"lol2"}
 
-	if not req_result_action. strip()=="get_joke":
+	if not req_result_action.strip()=="get_joke":
 		print "LOL1"
 		return {}
 	
 	#get_joke is supposed to return a tuple containing (joke, source)
 	payload, source=jokes.get_joke()
-	print 'B1000'
 	speech=payload
 	displayText=payload
 	
 	contextOut=["told_joke"]
-	print 'C1000'
 	return {
 		"speech":speech,
 		"displayText":displayText,
@@ -38,11 +32,3 @@ def makeWebhookResponse(req):
 		"source":source
 		}
 
-def makeJSON(res):
-
-	res=json.dumps(res, indent=4)
-	r=make_response(res)
-
-	r.headers['Content-Type']='application/json'
-
-	return r

@@ -1,9 +1,10 @@
 from flask import Flask
 from flask import request
+from flask import make_response
 
 from responses import makeWebhookResponse
-from responses import makeJSON
 
+import json
 import os
 
 app=Flask(__name__)
@@ -14,7 +15,10 @@ def apiai_post_handler():
 
 	res=makeWebhookResponse(req)
 
-	res=makeJSON(res)		
+	res=json.dumps(res, indent=4)
+        r=make_response(res)
+
+        r.headers['Content-Type']='application/json'
 
 	return res
 
