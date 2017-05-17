@@ -8,7 +8,7 @@ import os
 
 app=Flask(__name__)
 
-@app.route("\webhook", methods=['POST'])
+@app.route("/", methods=['POST'])
 def apiai_post_handler():
 	req=request.get_json(silent=True, force=True)
 

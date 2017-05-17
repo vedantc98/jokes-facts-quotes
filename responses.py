@@ -1,6 +1,6 @@
 import json
 
-from flask import make_request
+from flask import make_response
 from flask import request
 
 import jokes
@@ -18,9 +18,9 @@ def makeWebhookResponse(req):
 	contextOut=["told_joke"]
 
 	return {
-		"speech":speech
-		"displayText":displayText
-		"contextOut":contextOut
+		"speech":speech,
+		"displayText":displayText,
+		"contextOut":contextOut,
 		"source":source
 		}
 
