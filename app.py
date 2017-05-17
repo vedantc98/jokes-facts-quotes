@@ -1,16 +1,22 @@
 from flask import Flask
-from flask import make_request
 from flask import request
 
+from responses import makeWebhookResponse
+from responses import makeJSON
+
 import os
-import json
 
 app=Flask(__name__)
 
-@app.route('\', methods=['POST'])
-
+@app.route("\webhook", methods=['POST'])
 def apiai_post_handler():
-	return {}
+	req=request.get_json(silent=True, force=True)
+
+	res=makeWebhookResponse(req)
+
+	res=makeJSON(res)		
+
+	return res
 
 if __name__=='__main__':
 	port = int(os.getenv('PORT', 5000))
