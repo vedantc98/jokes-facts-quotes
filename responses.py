@@ -1,5 +1,5 @@
 import json
-
+import facts
 import jokes
 
 def makeWebhookResponse(req):
@@ -15,20 +15,28 @@ def makeWebhookResponse(req):
 		print "Lol2"
 		return {"lol2":"lol2"}
 
-	if not req_result_action.strip()=="get_joke":
-		print "LOL1"
-		return {}
-	
-	#get_joke is supposed to return a tuple containing (joke, source)
-	payload, source=jokes.get_joke()
-	speech=payload
-	displayText=payload
-	
-	contextOut=[{"name":"told_joke", "lifespan": 2, "parameters":{}}]
-	return {
-		"speech":speech,
-		"displayText":displayText,
-	#	"contextOut":contextOut,
-		"source":source
-		}
+	if req_result_action.strip()=="get_joke":
+		payload, source=jokes.get_joke()
+		speech=payload
+		displayText=payload
+		
+		contextOut=[{"name":"told_joke", "lifespan": 2, "parameters":{}}]
+		return {
+			"speech":speech,
+			"displayText":displayText,
+		#	"contextOut":contextOut,
+			"source":source
+			}
 
+	if req_result_action.strip()=="get_fact":
+		payload, source=facts.get_fact()
+		speech=payload
+		displayText=payload
+
+		contextOut=[{"name":"told_fact", "lifespan": 2, "parameters":{}}]
+		return {
+			"speech":speech,
+			"displayText":displayText,
+		#	"contextOut":contextOut,
+			"source":source
+			}

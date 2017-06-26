@@ -9,6 +9,7 @@ import os
 
 app=Flask(__name__)
 
+#activates the post handler when a post request is received
 @app.route("/", methods=['POST'])
 def apiai_post_handler():
 	req=request.get_json(silent=True, force=True)
