@@ -11,6 +11,7 @@ def get_quote():
 	quote=quote.replace("<p>", "")
 	quote=quote.replace("</p>", "")
 	quote+="-"+json_text['title']
+	quote=quote.replace("&#8217;", "\'")
 
 	return quote, source_url
 
