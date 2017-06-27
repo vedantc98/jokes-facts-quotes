@@ -1,6 +1,7 @@
 import json
 import facts
 import jokes
+import quotes
 
 def makeWebhookResponse(req):
 	try:
@@ -34,6 +35,18 @@ def makeWebhookResponse(req):
 		displayText=payload
 
 		contextOut=[{"name":"told_fact", "lifespan": 2, "parameters":{}}]
+		return {
+			"speech":speech,
+			"displayText":displayText,
+		#	"contextOut":contextOut,
+			"source":source
+			}
+	if req_result_action.strip()=="get_quote":
+		payload, source=quotes.get_quote()
+		speech=payload
+		displayText=payload
+
+		contextOut=[{"name":"told_quote", "lifespan": 2, "parameters":{}}]
 		return {
 			"speech":speech,
 			"displayText":displayText,

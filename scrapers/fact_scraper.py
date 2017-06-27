@@ -1,3 +1,6 @@
+#gets a bunch of facts from source http://randomfactgenerator.net
+#gets 3*TIMES facts
+
 import requests
 from bs4 import BeautifulSoup
 import sys
