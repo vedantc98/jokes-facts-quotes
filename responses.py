@@ -2,6 +2,7 @@ import json
 import facts
 import jokes
 import quotes
+import reddit
 
 def makeWebhookResponse(req):
 	try:
@@ -53,3 +54,15 @@ def makeWebhookResponse(req):
 		#	"contextOut":contextOut,
 			"source":source
 			}
+
+	if req_result_action.strip() == "get_reddit":
+		payload, source = reddit.get_posts(), "www.reddit.com"
+		speech = payload
+		displayText = payload
+		contextOut = [{"name":"fed_reddit", "lifespan": 2, "parameters":{}}]
+		return {
+			"speech":speech,
+			"displayText":displayText,
+		#	"contextOut":contextOut,
+			"source":source
+		}

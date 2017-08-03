@@ -12,4 +12,4 @@ def get_fact():
 				if i==no:
 					return line, source
 
-print get_fact()
+#print get_fact()
